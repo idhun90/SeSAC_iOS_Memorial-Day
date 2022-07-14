@@ -134,6 +134,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="BZl-7w-IEg" id="jd2-nm-OUz"/>
                         <outlet property="day100Label" destination="sHu-xN-fTw" id="SkU-tZ-ltx"/>
                         <outlet property="day200Label" destination="xF8-WF-axl" id="uJy-bv-Hpt"/>
                         <outlet property="day300Label" destination="0pa-AQ-kj0" id="qaB-HA-CQw"/>
