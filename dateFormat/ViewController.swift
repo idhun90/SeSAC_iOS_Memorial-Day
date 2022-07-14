@@ -39,10 +39,13 @@ class ViewController: UIViewController {
     @IBOutlet var resultLableList: [UILabel]!
     @IBOutlet var imageViewList: [UIImageView]!
     
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateUI()
+        selectpreferredDatePickerSyle()
         
     }
     
@@ -53,7 +56,7 @@ class ViewController: UIViewController {
             let labelTitle = ["D+100", "D+200", "D+300", "D+400"]
             titleLabelList[i].text = labelTitle[i]
             titleLabelList[i].textColor = .white
-            titleLabelList[i].font = .boldSystemFont(ofSize: 25)
+            titleLabelList[i].font = .boldSystemFont(ofSize: 22)
         }
         
         // 디데이 결과 레이블 디자인
@@ -67,10 +70,19 @@ class ViewController: UIViewController {
             i.backgroundColor = .systemBlue
             i.layer.masksToBounds = true
             i.layer.cornerRadius = 10
+            i.layer.opacity = 0.7
         }
         
         
         
+    }
+    
+    func selectpreferredDatePickerSyle() {
+        if #available(iOS 14.0, *) {
+            datePicker.preferredDatePickerStyle = .inline
+        } else {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
     }
 
     @IBAction func datePicker(_ sender: UIDatePicker) {
