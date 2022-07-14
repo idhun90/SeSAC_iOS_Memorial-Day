@@ -18,6 +18,9 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="BZl-7w-IEg">
                                 <rect key="frame" x="20" y="64" width="374" height="384"/>
+                                <connections>
+                                    <action selector="datePicker:" destination="BYZ-38-t0r" eventType="valueChanged" id="3T5-s7-gcO"/>
+                                </connections>
                             </datePicker>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b03-BH-lbI">
                                 <rect key="frame" x="20" y="468" width="177" height="177"/>
@@ -43,8 +46,8 @@
                                     <constraint firstAttribute="width" secondItem="7tD-A3-uGa" secondAttribute="height" multiplier="1:1" id="nQN-AJ-XQz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEE-IT-zoI">
-                                <rect key="frame" x="87.5" y="546" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEE-IT-zoI">
+                                <rect key="frame" x="88" y="546.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,20 +70,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-fN-Z6Z">
-                                <rect key="frame" x="284.5" y="546" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-fN-Z6Z">
+                                <rect key="frame" x="285" y="546.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-f7-ceF">
-                                <rect key="frame" x="284.5" y="743.5" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-f7-ceF">
+                                <rect key="frame" x="285" y="743.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-Yh-Lyr">
-                                <rect key="frame" x="87.5" y="743.5" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-Yh-Lyr">
+                                <rect key="frame" x="88" y="743.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -95,23 +98,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="BZl-7w-IEg" firstAttribute="leading" secondItem="b03-BH-lbI" secondAttribute="leading" id="13k-NG-4qe"/>
                             <constraint firstItem="7tD-A3-uGa" firstAttribute="leading" secondItem="kqW-nO-4YP" secondAttribute="trailing" constant="20" id="5og-Id-Va7"/>
                             <constraint firstItem="1XH-Uz-ZkF" firstAttribute="top" secondItem="7tD-A3-uGa" secondAttribute="top" constant="10" id="6kC-pq-Jbb"/>
                             <constraint firstItem="sHu-xN-fTw" firstAttribute="leading" secondItem="b03-BH-lbI" secondAttribute="leading" constant="10" id="7OA-jr-eoL"/>
                             <constraint firstItem="MEE-IT-zoI" firstAttribute="centerX" secondItem="b03-BH-lbI" secondAttribute="centerX" id="CFE-93-vU4"/>
                             <constraint firstItem="kqW-nO-4YP" firstAttribute="top" secondItem="b03-BH-lbI" secondAttribute="bottom" constant="20" id="CfQ-m1-EF8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BZl-7w-IEg" secondAttribute="trailing" constant="20" id="D3y-DR-FWm"/>
                             <constraint firstItem="kqW-nO-4YP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Gfp-ZF-FNw"/>
                             <constraint firstItem="xF8-WF-axl" firstAttribute="top" secondItem="pyI-K9-SAk" secondAttribute="top" constant="10" id="Gqv-FO-o3f"/>
                             <constraint firstItem="kqW-nO-4YP" firstAttribute="width" secondItem="b03-BH-lbI" secondAttribute="width" id="Ih5-RZ-l1E"/>
                             <constraint firstItem="0pa-AQ-kj0" firstAttribute="top" secondItem="kqW-nO-4YP" secondAttribute="top" constant="10" id="Im4-9I-xzC"/>
                             <constraint firstItem="b03-BH-lbI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="La0-XA-QEG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pyI-K9-SAk" secondAttribute="trailing" constant="20" id="Lg0-Jz-Zkw"/>
-                            <constraint firstItem="BZl-7w-IEg" firstAttribute="trailing" secondItem="pyI-K9-SAk" secondAttribute="trailing" id="M7I-YH-LHl"/>
                             <constraint firstItem="bFo-Yh-Lyr" firstAttribute="centerX" secondItem="kqW-nO-4YP" secondAttribute="centerX" id="MNO-cA-WMV"/>
                             <constraint firstItem="7tD-A3-uGa" firstAttribute="top" secondItem="pyI-K9-SAk" secondAttribute="bottom" constant="20" id="XXu-vX-9Av"/>
                             <constraint firstItem="1XH-Uz-ZkF" firstAttribute="leading" secondItem="7tD-A3-uGa" secondAttribute="leading" constant="10" id="YSc-1v-9A5"/>
                             <constraint firstItem="MEE-IT-zoI" firstAttribute="centerY" secondItem="b03-BH-lbI" secondAttribute="centerY" id="ZO6-gk-RdG"/>
+                            <constraint firstItem="BZl-7w-IEg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iOu-jz-QJx"/>
                             <constraint firstItem="b03-BH-lbI" firstAttribute="top" secondItem="BZl-7w-IEg" secondAttribute="bottom" constant="20" id="isV-a3-Wb6"/>
                             <constraint firstItem="pyI-K9-SAk" firstAttribute="leading" secondItem="b03-BH-lbI" secondAttribute="trailing" constant="20" id="kQm-wS-MMG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7tD-A3-uGa" secondAttribute="trailing" constant="20" id="kkq-se-JgQ"/>
@@ -130,6 +133,28 @@
                             <constraint firstItem="qJX-f7-ceF" firstAttribute="centerX" secondItem="7tD-A3-uGa" secondAttribute="centerX" id="wnz-MP-mdZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="day100Label" destination="sHu-xN-fTw" id="SkU-tZ-ltx"/>
+                        <outlet property="day200Label" destination="xF8-WF-axl" id="uJy-bv-Hpt"/>
+                        <outlet property="day300Label" destination="0pa-AQ-kj0" id="qaB-HA-CQw"/>
+                        <outlet property="day400Label" destination="1XH-Uz-ZkF" id="9cE-ul-lke"/>
+                        <outlet property="imageView100" destination="b03-BH-lbI" id="JXm-ss-AZ7"/>
+                        <outlet property="imageView200" destination="pyI-K9-SAk" id="3aa-m0-8yO"/>
+                        <outlet property="imageView300" destination="kqW-nO-4YP" id="pUp-O9-MVG"/>
+                        <outlet property="imageView400" destination="7tD-A3-uGa" id="GvK-9r-tDv"/>
+                        <outletCollection property="imageViewList" destination="b03-BH-lbI" collectionClass="NSMutableArray" id="1Ig-yw-8FB"/>
+                        <outletCollection property="imageViewList" destination="pyI-K9-SAk" collectionClass="NSMutableArray" id="UqU-np-a5n"/>
+                        <outletCollection property="imageViewList" destination="kqW-nO-4YP" collectionClass="NSMutableArray" id="mXA-8a-k0I"/>
+                        <outletCollection property="imageViewList" destination="7tD-A3-uGa" collectionClass="NSMutableArray" id="iij-T0-RyC"/>
+                        <outletCollection property="titleLabelList" destination="sHu-xN-fTw" collectionClass="NSMutableArray" id="F6d-Nn-TEU"/>
+                        <outletCollection property="titleLabelList" destination="xF8-WF-axl" collectionClass="NSMutableArray" id="g4A-Ep-kIO"/>
+                        <outletCollection property="titleLabelList" destination="0pa-AQ-kj0" collectionClass="NSMutableArray" id="9Wr-TA-Am0"/>
+                        <outletCollection property="titleLabelList" destination="1XH-Uz-ZkF" collectionClass="NSMutableArray" id="Qdd-ZI-mcm"/>
+                        <outletCollection property="resultLableList" destination="MEE-IT-zoI" collectionClass="NSMutableArray" id="Clr-to-GE9"/>
+                        <outletCollection property="resultLableList" destination="jRC-fN-Z6Z" collectionClass="NSMutableArray" id="0sJ-Bl-m3Y"/>
+                        <outletCollection property="resultLableList" destination="bFo-Yh-Lyr" collectionClass="NSMutableArray" id="C39-op-2RF"/>
+                        <outletCollection property="resultLableList" destination="qJX-f7-ceF" collectionClass="NSMutableArray" id="NdV-cL-jQ8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
