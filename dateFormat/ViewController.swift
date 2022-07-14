@@ -77,8 +77,6 @@ class ViewController: UIViewController {
             i.layer.opacity = 0.7
         }
         
-        
-        
     }
     
     func selectpreferredDatePickerSyle() {
@@ -96,77 +94,47 @@ class ViewController: UIViewController {
         //        dateFormatter.timeStyle = .none
         
         dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
-        
         let date = sender.date // DatePicker sender date를 받아옴
-        
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        
         let result = dateFormatter.string(from: date)
         print("선택한 날짜는 \(result)입니다.")
         
         for i in resultLableList {
             i.text = result
         }
-
-        // 타이머 작동시 오류 발생,,,
-//        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
+        
+        // 타이머 작동시 오류 발생
+        // timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
         calculatorFunction(date: result)
-    
+        
     }
     
     @objc func calculatorFunction(date: String) {
         let calculatorDay = Calculator()
-        resultLableList[0].text = calculatorDay.day100(date: date)
-        resultLableList[1].text = calculatorDay.day200(date: date)
-        resultLableList[2].text = calculatorDay.day300(date: date)
-        resultLableList[3].text = calculatorDay.day400(date: date)
+        resultLableList[0].text = calculatorDay.ddayCalculator(date: date, day: 100)
+        resultLableList[1].text = calculatorDay.ddayCalculator(date: date, day: 200)
+        resultLableList[2].text = calculatorDay.ddayCalculator(date: date, day: 300)
+        resultLableList[3].text = calculatorDay.ddayCalculator(date: date, day: 400)
         
         // 문제: 결과값 오차가 +,- 1 만큼 발생했다.
         // 애플 공식 문서에 addingTimeInterval() 메소드 사용시 일수가 다른 월 등 복잡성 때문에 문제가 생길 수 있으니
-        // 시간, 일, 월 등 달력 연산은 주의하라는 내용이 있는데 아마 그 부분 때문에 오차가 발생한 것 같다.
+        // 시간, 일, 월 등 달력 연산은 주의하라는 경고가 있었는데 그 부분 때문에 오차가 발생한 것일까?
     }
     
-
+    
     //MARK: - D-Day 계산 구조체
     // D-Day 계산 구조체 생성
     struct Calculator {
-
-        func day100(date: String) -> String {
+        
+        func ddayCalculator(date: String, day: Double) -> String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
             dateFormatter.locale = Locale(identifier: "ko_KR")
             let result = dateFormatter.date(from: date)!
-            let add100 = result.addingTimeInterval(100*24*60*60)
+            let add = result.addingTimeInterval(day*24*60*60)
             
-            return dateFormatter.string(from: add100)
+            return dateFormatter.string(from: add)
         }
         
-        func day200(date: String) -> String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
-            dateFormatter.locale = Locale(identifier: "ko_KR")
-            let result = dateFormatter.date(from: date)!
-            let add200 = result.addingTimeInterval(200*24*60*60)
-            
-            return dateFormatter.string(from: add200)
-        }
-        func day300(date: String) -> String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
-            dateFormatter.locale = Locale(identifier: "ko_KR")
-            let result = dateFormatter.date(from: date)!
-            let add300 = result.addingTimeInterval(300*24*60*60)
-            
-            return dateFormatter.string(from: add300)
-        }
-        func day400(date: String) -> String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
-            dateFormatter.locale = Locale(identifier: "ko_KR")
-            let result = dateFormatter.date(from: date)!
-            let add400 = result.addingTimeInterval(400*24*60*60)
-            
-            return dateFormatter.string(from: add400)
-        }
     }
 }
