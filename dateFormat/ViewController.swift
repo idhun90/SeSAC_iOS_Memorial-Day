@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         }
         
         // 타이머 작동시 오류 발생
-        // timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
         calculatorFunction(date: result)
         
     }
