@@ -125,10 +125,10 @@ class ViewController: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
             dateFormatter.locale = Locale(identifier: "ko_KR")
-            let result = dateFormatter.date(from: date)!
-            let add = result.addingTimeInterval(day*24*60*60)
+            let selectedDate = dateFormatter.date(from: date)!
+            let calculatedDate = selectedDate.addingTimeInterval(day*24*60*60)
             
-            return dateFormatter.string(from: add)
+            return dateFormatter.string(from: calculatedDate)
         }
     }
 }
