@@ -111,24 +111,38 @@ class ViewController: UIViewController {
         let currentDay = currentDate.string(from: date)
         print(currentDay) // 현재 선택된 날짜
         
-        let calculatorDay = Calculator()
+        resultLableList[0].text = ddayCalculator(date: currentDay, day: 100)
+        resultLableList[1].text = ddayCalculator(date: currentDay, day: 200)
+        resultLableList[2].text = ddayCalculator(date: currentDay, day: 300)
+        resultLableList[3].text = ddayCalculator(date: currentDay, day: 400)
         
-        resultLableList[0].text = calculatorDay.ddayCalculator(date: currentDay, day: 100)
-        resultLableList[1].text = calculatorDay.ddayCalculator(date: currentDay, day: 200)
-        resultLableList[2].text = calculatorDay.ddayCalculator(date: currentDay, day: 300)
-        resultLableList[3].text = calculatorDay.ddayCalculator(date: currentDay, day: 400)
+//        let calculatorDay = Calculator()
+//        resultLableList[0].text = calculatorDay.ddayCalculator(date: currentDay, day: 100)
+//        resultLableList[1].text = calculatorDay.ddayCalculator(date: currentDay, day: 200)
+//        resultLableList[2].text = calculatorDay.ddayCalculator(date: currentDay, day: 300)
+//        resultLableList[3].text = calculatorDay.ddayCalculator(date: currentDay, day: 400)
     }
     
-    // D-Day 계산 구조체 생성
-    struct Calculator {
-        func ddayCalculator(date: String, day: Double) -> String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
-            dateFormatter.locale = Locale(identifier: "ko_KR")
-            let selectedDate = dateFormatter.date(from: date)!
-            let calculatedDate = selectedDate.addingTimeInterval(day*24*60*60)
-            
-            return dateFormatter.string(from: calculatedDate)
-        }
+    // D-Day 계산 함수 생성
+    func ddayCalculator(date: String, day: Double) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        let selectedDate = dateFormatter.date(from: date)!
+        let calculatedDate = selectedDate.addingTimeInterval(day*24*60*60)
+        
+        return dateFormatter.string(from: calculatedDate)
     }
+    
+//    struct Calculator {
+//        func ddayCalculator(date: String, day: Double) -> String {
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
+//            dateFormatter.locale = Locale(identifier: "ko_KR")
+//            let selectedDate = dateFormatter.date(from: date)!
+//            let calculatedDate = selectedDate.addingTimeInterval(day*24*60*60)
+//
+//            return dateFormatter.string(from: calculatedDate)
+//        }
+//    }
 }
