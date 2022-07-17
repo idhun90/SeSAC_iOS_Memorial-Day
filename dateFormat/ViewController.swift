@@ -49,18 +49,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     // 타이머 생성
-    var timer = Timer()
+    // var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateUI()
-        selectpreferredDatePickerSyle()
         
         // 현재(오늘) 날짜 표시
-        currentDay(sender: datePicker)
-
-        
+        calculateDay(sender: datePicker)
     }
     
     func updateUI() {
@@ -88,40 +84,41 @@ class ViewController: UIViewController {
             i.layer.opacity = 0.7
         }
         
-    }
-    
-    func selectpreferredDatePickerSyle() {
+        // 데이터피커 버전에 따른 디자인
         if #available(iOS 14.0, *) {
             datePicker.preferredDatePickerStyle = .inline
         } else {
             datePicker.preferredDatePickerStyle = .wheels
         }
+        
     }
+    
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
         //선택한 날짜 표시
-        currentDay(sender: sender)
-
-        // 타이머 작동시 오류 발생
-//        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
-    }
-    
-    // D-Day 계산 함수
-    @objc func calculatorFunction(date: String) {
-        let calculatorDay = Calculator()
-
-        resultLableList[0].text = calculatorDay.ddayCalculator(date: date, day: 100)
-        resultLableList[1].text = calculatorDay.ddayCalculator(date: date, day: 200)
-        resultLableList[2].text = calculatorDay.ddayCalculator(date: date, day: 300)
-        resultLableList[3].text = calculatorDay.ddayCalculator(date: date, day: 400)
+        calculateDay(sender: sender)
         
-        // 문제: 결과값 오차가 +,- 1 만큼 발생했다.
-        // 애플 공식 문서에 addingTimeInterval() 메소드 사용시 일수가 다른 월 등 복잡성 때문에 문제가 생길 수 있으니
-        // 시간, 일, 월 등 달력 연산은 주의하라는 경고가 있었는데 그 부분 때문에 오차가 발생한 것일까?
+        // 타이머 작동시 오류 발생
+        // timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
     }
     
+    // 현재 또는 선택한 날짜의 D-Day 값 계산 및 100, 200, 300, 400일 레이블에 할당
+    func calculateDay(sender: UIDatePicker) {
+        let currentDate = DateFormatter()
+        currentDate.dateFormat = "YYYY년\nMM월 dd일"
+        let date = sender.date
+        currentDate.locale = Locale(identifier: "ko_KR")
+        let currentDay = currentDate.string(from: date)
+        print(currentDay) // 현재 선택된 날짜
+        
+        let calculatorDay = Calculator()
+        
+        resultLableList[0].text = calculatorDay.ddayCalculator(date: currentDay, day: 100)
+        resultLableList[1].text = calculatorDay.ddayCalculator(date: currentDay, day: 200)
+        resultLableList[2].text = calculatorDay.ddayCalculator(date: currentDay, day: 300)
+        resultLableList[3].text = calculatorDay.ddayCalculator(date: currentDay, day: 400)
+    }
     
-    //MARK: - D-Day 계산 구조체
     // D-Day 계산 구조체 생성
     struct Calculator {
         func ddayCalculator(date: String, day: Double) -> String {
@@ -132,22 +129,6 @@ class ViewController: UIViewController {
             let add = result.addingTimeInterval(day*24*60*60)
             
             return dateFormatter.string(from: add)
-        }
-    }
-    
-    // 현재 날짜
-    func currentDay(sender: UIDatePicker) {
-        let currentDate = DateFormatter()
-        currentDate.dateFormat = "YYYY년\nMM월 dd일"
-        let date = sender.date
-        currentDate.locale = Locale(identifier: "ko_KR")
-        let result = currentDate.string(from: date)
-        print(result)
-        
-        calculatorFunction(date: result)
-        
-        for i in resultLableList {
-            print(i.text!)
         }
     }
 }
