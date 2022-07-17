@@ -56,13 +56,10 @@ class ViewController: UIViewController {
         
         updateUI()
         selectpreferredDatePickerSyle()
+        
+        // 현재(오늘) 날짜 표시
+        currentDay(sender: datePicker)
 
-        
-        
-        print("\(day100Label.text = UserDefaults.standard.string(forKey: Day.day100.rawValue))")
-        day200Label.text = UserDefaults.standard.string(forKey: Day.day200.rawValue)
-        day300Label.text = UserDefaults.standard.string(forKey: Day.day300.rawValue)
-        day400Label.text = UserDefaults.standard.string(forKey: Day.day400.rawValue)
         
     }
     
@@ -102,41 +99,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
-        
         //선택한 날짜 표시
-        let dateFormatter = DateFormatter()
-        //        dateFormatter.dateStyle = .long // 연도, 월&일 두 개의 레이블로 나눠야 하는지 고민했지만 작업 편의를 위해 일단 보류.
-        //        dateFormatter.timeStyle = .none
-        
-        dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
-        let date = sender.date // DatePicker sender date를 받아옴
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        let result = dateFormatter.string(from: date)
-        print("선택한 날짜는 \(result)입니다.")
-        
-        for i in resultLableList {
-            i.text = result
-        }
-        
+        currentDay(sender: sender)
+
         // 타이머 작동시 오류 발생
 //        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
-       
-        // 100, 200, 300, 400일 뒤 날짜 표시
-        calculatorFunction(date: result)
-        
-        UserDefaults.standard.set(resultLableList[0].text, forKey: Day.day100.rawValue)
-        print("저장 완료")
-        UserDefaults.standard.set(resultLableList[1].text, forKey: Day.day200.rawValue)
-        print("저장 완료")
-        UserDefaults.standard.set(resultLableList[2].text, forKey: Day.day300.rawValue)
-        print("저장 완료")
-        UserDefaults.standard.set(resultLableList[3].text, forKey: Day.day400.rawValue)
-        print("저장 완료")
-        
     }
     
+    // D-Day 계산 함수
     @objc func calculatorFunction(date: String) {
         let calculatorDay = Calculator()
+
         resultLableList[0].text = calculatorDay.ddayCalculator(date: date, day: 100)
         resultLableList[1].text = calculatorDay.ddayCalculator(date: date, day: 200)
         resultLableList[2].text = calculatorDay.ddayCalculator(date: date, day: 300)
@@ -151,7 +124,6 @@ class ViewController: UIViewController {
     //MARK: - D-Day 계산 구조체
     // D-Day 계산 구조체 생성
     struct Calculator {
-        
         func ddayCalculator(date: String, day: Double) -> String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
@@ -161,6 +133,21 @@ class ViewController: UIViewController {
             
             return dateFormatter.string(from: add)
         }
+    }
+    
+    // 현재 날짜
+    func currentDay(sender: UIDatePicker) {
+        let currentDate = DateFormatter()
+        currentDate.dateFormat = "YYYY년\nMM월 dd일"
+        let date = sender.date
+        currentDate.locale = Locale(identifier: "ko_KR")
+        let result = currentDate.string(from: date)
+        print(result)
         
+        calculatorFunction(date: result)
+        
+        for i in resultLableList {
+            print(i.text!)
+        }
     }
 }
