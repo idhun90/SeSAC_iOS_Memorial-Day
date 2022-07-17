@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Defaults View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="UserDefaultsViewController" customModule="dateFormat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4s-tm-26V">
+                                <rect key="frame" x="20" y="464" width="140" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="QaG-w3-s4F"/>
+                                    <constraint firstAttribute="height" constant="35" id="TPZ-V1-XhY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="클릭 횟수 증가" titleAlignment="center">
+                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="countCicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2Oh-0Q-NsM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Hu-zi-atY">
+                                <rect key="frame" x="157" y="384" width="100" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="FJW-HS-1dp"/>
+                                    <constraint firstAttribute="height" constant="35" id="peY-Mq-xPV"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="저장" titleAlignment="center">
+                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveText:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0rf-jq-XdA"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ans-0f-9W7">
+                                <rect key="frame" x="20" y="64" width="374" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="NXT-qI-j0d"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsT-mh-8su">
+                                <rect key="frame" x="342" y="471" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIk-iA-VwM">
+                                <rect key="frame" x="20" y="519" width="140" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="횟수 초기화">
+                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="17"/>
+                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clearCount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yK3-gn-jdF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ans-0f-9W7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Cue-um-Drg"/>
+                            <constraint firstItem="D4s-tm-26V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Ebd-Tb-axT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ans-0f-9W7" secondAttribute="trailing" constant="20" id="K8k-Aq-0r2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qsT-mh-8su" secondAttribute="trailing" constant="30" id="L2R-pf-n7O"/>
+                            <constraint firstItem="2Hu-zi-atY" firstAttribute="top" secondItem="ans-0f-9W7" secondAttribute="bottom" constant="20" id="Nf7-z9-Kdv"/>
+                            <constraint firstItem="ans-0f-9W7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="U32-8I-mWT"/>
+                            <constraint firstItem="D4s-tm-26V" firstAttribute="top" secondItem="ans-0f-9W7" secondAttribute="bottom" constant="100" id="rtF-9k-2kf"/>
+                            <constraint firstItem="2Hu-zi-atY" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="uuE-6q-Dw8"/>
+                            <constraint firstItem="qsT-mh-8su" firstAttribute="centerY" secondItem="D4s-tm-26V" secondAttribute="centerY" id="v6s-fK-9Mj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countButton" destination="D4s-tm-26V" id="GH6-7s-eBC"/>
+                        <outlet property="countLabel" destination="qsT-mh-8su" id="m3w-Xt-oGk"/>
+                        <outlet property="saveButton" destination="2Hu-zi-atY" id="A6i-Dw-kbP"/>
+                        <outlet property="textView" destination="ans-0f-9W7" id="oeE-d4-yf1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
