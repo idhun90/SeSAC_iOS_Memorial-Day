@@ -22,10 +22,7 @@
 //        print("현재 시간은 \(now)입니다.")
 
 enum Day: String {
-    case day100
-    case day200
-    case day300
-    case day400
+    case days
 }
 
 import UIKit
@@ -48,6 +45,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    // 데이터 피커의 선택값 저장
+//    var savedSelectedDateString: String = ""
+    
     // 타이머 생성
     // var timer = Timer()
     
@@ -56,7 +56,8 @@ class ViewController: UIViewController {
         updateUI()
         
         // 현재(오늘) 날짜 표시
-        calculateDay(sender: datePicker)
+//        calculateDay(sender: datePicker)
+        loadSavedDateString()
     }
     
     func updateUI() {
@@ -116,6 +117,10 @@ class ViewController: UIViewController {
         resultLableList[2].text = ddayCalculator(date: currentDay, day: 300)
         resultLableList[3].text = ddayCalculator(date: currentDay, day: 400)
         
+        // date의 String 형식 값 저장
+        UserDefaults.standard.set(currentDay, forKey: Day.days.rawValue) // 현재 datePicker의 date String타입 값 저장
+
+        
 //        let calculatorDay = Calculator()
 //        resultLableList[0].text = calculatorDay.ddayCalculator(date: currentDay, day: 100)
 //        resultLableList[1].text = calculatorDay.ddayCalculator(date: currentDay, day: 200)
@@ -132,6 +137,25 @@ class ViewController: UIViewController {
         let calculatedDate = selectedDate.addingTimeInterval(day*24*60*60)
         
         return dateFormatter.string(from: calculatedDate)
+    }
+    
+    // 저장된 date String 값 가져오기
+    func loadSavedDateString() {
+        if UserDefaults.standard.string(forKey: Day.days.rawValue) != nil {
+            let initDateString = UserDefaults.standard.string(forKey: Day.days.rawValue)
+            let initdateFormatter = DateFormatter()
+            initdateFormatter.dateFormat = "YYYY년\nMM월 dd일"
+            initdateFormatter.locale = Locale(identifier: "ko_KR")
+            datePicker.date = initdateFormatter.date(from: initDateString!)! // 저장된 date String 값을 date 타입으로 변환해서 현재 datepicker의 date로 표시하도록 할당
+            
+            resultLableList[0].text = ddayCalculator(date: initDateString!, day: 100) // 할당된 date String 값으로 디데이 계산 후 레이블에 할당
+            resultLableList[1].text = ddayCalculator(date: initDateString!, day: 200)
+            resultLableList[2].text = ddayCalculator(date: initDateString!, day: 300)
+            resultLableList[3].text = ddayCalculator(date: initDateString!, day: 400)
+            
+        } else {
+            print("오류가 발생했습니다.")
+        }
     }
     
 //    struct Calculator {
