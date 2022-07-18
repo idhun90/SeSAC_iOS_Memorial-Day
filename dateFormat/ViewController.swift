@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     // 데이터 피커의 선택값 저장
-//    var savedSelectedDateString: String = ""
+    //    var savedSelectedDateString: String = ""
     
     // 타이머 생성
     // var timer = Timer()
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         updateUI()
         
         // 현재(오늘) 날짜 표시
-//        calculateDay(sender: datePicker)
+        //        calculateDay(sender: datePicker)
         loadSavedDateString()
     }
     
@@ -98,6 +98,7 @@ class ViewController: UIViewController {
     @IBAction func datePicker(_ sender: UIDatePicker) {
         //선택한 날짜 표시
         calculateDay(sender: sender)
+
         
         // 타이머 작동시 오류 발생
         // timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(calculatorFunction(date:)), userInfo: nil, repeats: false)
@@ -105,13 +106,15 @@ class ViewController: UIViewController {
     
     // 현재 또는 선택한 날짜의 D-Day 값 계산 및 100, 200, 300, 400일 레이블에 할당
     func calculateDay(sender: UIDatePicker) {
-        let currentDate = DateFormatter()
-        currentDate.dateFormat = "YYYY년\nMM월 dd일"
         let date = sender.date
+        let currentDate = DateFormatter()
+        
+        currentDate.dateFormat = "YYYY년\nMM월 dd일"
         currentDate.locale = Locale(identifier: "ko_KR")
+        
         let currentDay = currentDate.string(from: date)
         print(currentDay) // 현재 선택된 날짜
-        
+
         resultLableList[0].text = ddayCalculator(date: currentDay, day: 100)
         resultLableList[1].text = ddayCalculator(date: currentDay, day: 200)
         resultLableList[2].text = ddayCalculator(date: currentDay, day: 300)
@@ -119,13 +122,8 @@ class ViewController: UIViewController {
         
         // date의 String 형식 값 저장
         UserDefaults.standard.set(currentDay, forKey: Day.days.rawValue) // 현재 datePicker의 date String타입 값 저장
-
-        
-//        let calculatorDay = Calculator()
-//        resultLableList[0].text = calculatorDay.ddayCalculator(date: currentDay, day: 100)
-//        resultLableList[1].text = calculatorDay.ddayCalculator(date: currentDay, day: 200)
-//        resultLableList[2].text = calculatorDay.ddayCalculator(date: currentDay, day: 300)
-//        resultLableList[3].text = calculatorDay.ddayCalculator(date: currentDay, day: 400)
+        // 데이터 저장 코드를 다른 곳에 작성하고 현재 함수와 아래 함수를 병합해서 간결하게 만들어 보는 것 고민해 보기
+ 
     }
     
     // D-Day 계산 함수 생성
@@ -136,7 +134,9 @@ class ViewController: UIViewController {
         let selectedDate = dateFormatter.date(from: date)!
         let calculatedDate = selectedDate.addingTimeInterval(day*24*60*60)
         
-        return dateFormatter.string(from: calculatedDate)
+        let calculatedDateString = dateFormatter.string(from: calculatedDate)
+        
+        return calculatedDateString
     }
     
     // 저장된 date String 값 가져오기
@@ -157,16 +157,36 @@ class ViewController: UIViewController {
             print("오류가 발생했습니다.")
         }
     }
+
     
-//    struct Calculator {
-//        func ddayCalculator(date: String, day: Double) -> String {
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "YYYY년\nMM월 dd일"
-//            dateFormatter.locale = Locale(identifier: "ko_KR")
-//            let selectedDate = dateFormatter.date(from: date)!
-//            let calculatedDate = selectedDate.addingTimeInterval(day*24*60*60)
+    
+//    func calculateDdayDate(sender: UIDatePicker, day: Double) -> String {
+//        var date = sender.date
 //
-//            return dateFormatter.string(from: calculatedDate)
-//        }
+//        let ddayDate = DateFormatter()
+//
+//        ddayDate.dateFormat = "YYYY년\nMM세월 dd일"
+//        ddayDate.locale = Locale(identifier: "ko_KR")
+//        let calculateDate = date.addTimeInterval(day*24*60*60)
+//
+//        return calculateDate
+//
+//        resultLableList[0].text = ddayDate.string(from: date.addingTimeInterval(100*24*60*60))
+//        resultLableList[1].text = ddayDate.string(from: date.addingTimeInterval(200*24*60*60))
+//        resultLableList[2].text = ddayDate.string(from: date.addingTimeInterval(300*24*60*60))
+//        resultLableList[3].text = ddayDate.string(from: date.addingTimeInterval(400*24*60*60))
+//
 //    }
+//
+//    func fullDate(sender: UIDatePicker) -> String {
+//        let date = sender.date
+//        let fullDate = DateFormatter()
+//
+//        fullDate.dateFormat = "YYYY년 MM월 dd일 HH시간 mm분 ss초"
+//        fullDate.locale = Locale(identifier: "ko_KR")"YYYY년 MM월 dd일 HH시간 mm분 ss초"            let currentFullDay = fullDate.string(from: date)
+//
+//        return currentFullDay
+//
+//    }
+    
 }
